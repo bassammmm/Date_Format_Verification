@@ -17,14 +17,18 @@ def dd_mm_yy(date_list):
             result_dict[date_list[date]].append("There are alphabet(s) in the date.")
 
         date_split = date_list[date].split('-')
+        len_err=0
         if len(date_split)==3:
             if len(date_split[0])>2 or len(date_split[0])<2:
                 result_dict[date_list[date]].append("The number of characters in the dd(date) are not correct.")
+                len_err+=1
             if len(date_split[1]) > 2 or len(date_split[1]) < 2:
                 result_dict[date_list[date]].append("The number of characters in the mm(month) are not correct.")
+                len_err += 1
             if len(date_split[2]) > 2 or len(date_split[2]) < 2:
+                len_err += 1
                 result_dict[date_list[date]].append("The number of characters in the yy(month) are not correct.")
-        if ch_err==0 and len(date_split)==3:
+        if ch_err==0 and len(date_split)==3 and len_err==0:
             if int(date_split[0])>31 or int(date_split[0])<1:
                 result_dict[date_list[date]].append("The day in the date is out of range.")
             if int(date_split[1])>12 or int(date_split[1])<1:
